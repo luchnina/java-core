@@ -1,12 +1,11 @@
 package ru.makhonya.javalearn.factorial;
 
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigInteger;
 
-class FactorialApplicationTest {
+public class FactorialApplicationTest {
 
     @Test
     public void calculationFactorial_whenInteger_thenBigInteger() {
