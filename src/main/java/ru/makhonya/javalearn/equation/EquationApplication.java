@@ -3,9 +3,9 @@ package ru.makhonya.javalearn.equation;
 public class EquationApplication {
 
     /**
-     * @param bet            ставка накопительного счета
-     * @param savings        первоначальные накопления
-     * @param salary         вносимая сумма на накопительный счет каждый месяц
+     * @param bet ставка накопительного счета
+     * @param savings первоначальные накопления
+     * @param salary вносимая сумма на накопительный счет каждый месяц
      * @param savingsAccount итоговые накопления на конец периода в year лет
      * @return double год в который удастся накопить savingsAccount
      */
@@ -36,5 +36,4 @@ public class EquationApplication {
         double exponentiation = Math.pow((1 + (double) bet / 100), a);
         return savingsAccount - salary * 12 * ((1 - exponentiation) / ((double) -bet / 100)) - savings * exponentiation;
     }
-
 }
