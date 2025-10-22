@@ -1,7 +1,11 @@
 package ru.makhonya.javalearn.polindrom;
 
 public class PalindromeChecker {
-    public static void main(String[] args) {}
+
+    public static void main(String[] args) {
+
+    }
+
     public static boolean isPalindrome(String str) {
         if (str == null) {
             return false;
