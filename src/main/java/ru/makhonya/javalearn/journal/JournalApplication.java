@@ -1,19 +1,15 @@
 package ru.makhonya.javalearn.journal;
 
-import java.util.Arrays;
-
 public class JournalApplication {
 
-    public static int[] addRating(int[] array, int rating) {
-        if (array == null) {
+    public static int[] addRating(int[] arrayRating, int rating) {
+        if (arrayRating == null) {
             return new int[]{rating};
         }
 
-        int[] newArray = new int[array.length + 1];
+        int[] newArray = new int[arrayRating.length + 1];
 
-        for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
-        }
+        System.arraycopy(arrayRating, 0, newArray, 0, arrayRating.length);
 
         newArray[newArray.length - 1] = rating;
 
@@ -40,7 +36,6 @@ public class JournalApplication {
         };
 
         for (int j : array) {
-
             switch (j) {
                 case 5 -> newArray[0][1] += 1;
                 case 4 -> newArray[1][1] += 1;
