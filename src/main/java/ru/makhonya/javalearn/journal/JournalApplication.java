@@ -1,5 +1,7 @@
 package ru.makhonya.javalearn.journal;
 
+import java.util.Arrays;
+
 public class JournalApplication {
 
     public static int[] addRating(int[] arrayRating, int rating) {
@@ -7,9 +9,7 @@ public class JournalApplication {
             return new int[]{rating};
         }
 
-        int[] newArray = new int[arrayRating.length + 1];
-
-        System.arraycopy(arrayRating, 0, newArray, 0, arrayRating.length);
+        int[] newArray = Arrays.copyOf(arrayRating, arrayRating.length + 1);
 
         newArray[newArray.length - 1] = rating;
 
