@@ -24,15 +24,19 @@ public class Computer {
         return operatingSystems;
     }
 
-    public void setOperatingSystems(String system) {
-        String[] operatingSystem = this.operatingSystems;
-        operatingSystem = Arrays.copyOf(operatingSystem, operatingSystem.length + 1);
-        operatingSystem[operatingSystem.length - 1] = system;
+    public void setOperatingSystems(String[] operatingSystems) {
+       this.operatingSystems = operatingSystems;
+    }
+
+    public void addSystem(String system) {
+        String[] newSystems = Arrays.copyOf(this.operatingSystems, this.operatingSystems.length + 1);
+        newSystems[newSystems.length - 1] = system;
+        this.setOperatingSystems(newSystems);
     }
 
     public boolean checkingAvailabilitySystem(String system) {
-        for(String operatingSystem : operatingSystems) {
-            if(operatingSystem.contains(system)) {
+        for (String operatingSystem : operatingSystems) {
+            if (operatingSystem.contains(system)) {
                 return true;
             }
         }
@@ -42,6 +46,10 @@ public class Computer {
 
     public Display getDisplay() {
         return display;
+    }
+
+    public void setDisplay(Display display) {
+        this.display = display;
     }
 
     public static class Display {
