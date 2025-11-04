@@ -1,6 +1,6 @@
 package ru.makhonya.javalearn.geography;
 
-public enum Ocean {
+public enum Ocean implements  Location {
     ATLANTIC("Атлантический"),
     INDIAN("Индийский"),
     ARCTIC("Северный Ледовитый"),

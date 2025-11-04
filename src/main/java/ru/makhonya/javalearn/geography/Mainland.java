@@ -1,6 +1,6 @@
 package ru.makhonya.javalearn.geography;
 
-public enum Mainland {
+public enum Mainland implements  Location {
     AFRICA("Африка"),
     ANTARCTICA("Антарктида"),
     ASIA("Азия"),

@@ -1,10 +1,10 @@
 package ru.makhonya.javalearn.geography;
 
-public abstract class Miracles {
+public abstract class Miracles implements Location {
 
     private String name;
 
-    Miracles(String name) {
+    public Miracles(String name) {
         this.name = name;
     }
 
@@ -18,15 +18,7 @@ public abstract class Miracles {
 
     @Override
     public String toString() {
-        String getSimpleNameClass = this.getClass().getSimpleName();
-
-        String getRuName = switch (getSimpleNameClass) {
-            case "MiraclesNature" -> "чудо природы";
-            case "MiraclesArchitecture" -> "чудо архитектуры";
-            default -> "Если бы мы знали что это такое ...";
-        };
-
-        return getRuName + " " + getName();
+        return getName();
     }
 
     @Override

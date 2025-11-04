@@ -1,10 +1,10 @@
 package ru.makhonya.javalearn.geography;
 
-public class Country {
+public class Country implements Location {
 
     private String name;
 
-    Country(String name) {
+    public Country(String name) {
         this.name = name;
     }
 
@@ -18,17 +18,7 @@ public class Country {
 
     @Override
     public String toString() {
-        String getSimpleNameClass = this.getClass().getSimpleName();
-
-        String getRuName = switch (getSimpleNameClass) {
-            case "Country" -> "Страна";
-            case "Region" -> "Регион";
-            case "City" -> "Город";
-            case "District" -> "Округ";
-            default -> "Если бы мы знали что это такое ...";
-        };
-
-        return getRuName + " " + getName();
+        return "Страна " + getName();
     }
 
     @Override
