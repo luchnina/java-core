@@ -1,13 +1,13 @@
 package ru.makhonya.javalearn.geography;
 
-public class City extends Region {
+public class City extends HumanSettlement {
 
-    public City(String name) {
-        super(name);
-    }
+	public City(String name) {
+		super(name);
+	}
 
-    @Override
-    public String toString() {
-        return "Город " + getName();
-    }
+	@Override
+	public String toString() {
+		return "Город " + getName();
+	}
 }

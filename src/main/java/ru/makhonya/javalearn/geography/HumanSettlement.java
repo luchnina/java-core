@@ -1,15 +1,15 @@
 package ru.makhonya.javalearn.geography;
 
-public abstract class Miracles implements Location {
+public class HumanSettlement implements Location {
 
 	private String name;
 
-	public Miracles(String name) {
+	public HumanSettlement(String name) {
 		this.name = name;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -26,8 +26,8 @@ public abstract class Miracles implements Location {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 
-		Miracles miracles = (Miracles) o;
-		return name.equals(miracles.name);
+		Country country = (Country) o;
+		return this.getName().equals(country.getName());
 	}
 
 	@Override
