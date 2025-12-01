@@ -1,5 +1,7 @@
 package ru.makhonya.javalearn.geography;
 
+import java.util.Objects;
+
 public class HumanSettlement implements Location {
 
 	private String name;
@@ -26,12 +28,12 @@ public class HumanSettlement implements Location {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 
-		Country country = (Country) o;
+		HumanSettlement country = (HumanSettlement) o;
 		return this.getName().equals(country.getName());
 	}
 
 	@Override
 	public int hashCode() {
-		return this.getName() != null ? 31 * this.getName().hashCode() : 0;
+		return Objects.hash(name);
 	}
 }
