@@ -1,5 +1,7 @@
 package ru.makhonya.javalearn.geography;
 
+import java.util.Objects;
+
 public abstract class Miracles implements Location {
 
 	private String name;
@@ -32,6 +34,6 @@ public abstract class Miracles implements Location {
 
 	@Override
 	public int hashCode() {
-		return this.getName() != null ? 31 * this.getName().hashCode() : 0;
+		return Objects.hash(name);
 	}
 }
