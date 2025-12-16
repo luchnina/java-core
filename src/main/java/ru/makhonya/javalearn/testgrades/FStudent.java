@@ -1,5 +1,7 @@
 package ru.makhonya.javalearn.testgrades;
 
+import java.util.Arrays;
+
 public class FStudent extends Student {
 
 	//Двоечники
@@ -9,12 +11,10 @@ public class FStudent extends Student {
 
 	@Override
 	public int scoreCalculation(int[] student) {
-		int front = student[0];
-		int desk = student[1];
-		int back = student[2];
+		Arrays.sort(student);
 
-		int maximumValue = Math.max(front + desk, Math.max(back + desk, front + back));
-		int half = maximumValue / 2;
+		// Сортируется по возрастанию, поэтому самые большие значения в конце.
+		int half = (student[1] + student[2]) / 2;
 		return (half <= 1) ? 2 : half;
 	}
 }
