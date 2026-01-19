@@ -8,5 +8,5 @@ public enum TransactionStatus {
 	/**
 	 * Закрыта (успешно или с нулевой суммой)
 	 */
-	COMMITED
+	COMMITTED
 }

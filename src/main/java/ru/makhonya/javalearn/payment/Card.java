@@ -1,6 +1,8 @@
 package ru.makhonya.javalearn.payment;
 
+import ru.makhonya.javalearn.payment.exception.bank.Bank;
 import ru.makhonya.javalearn.payment.transaction.CardNumber;
+import ru.makhonya.javalearn.payment.transaction.TransactionId;
 
 /**
  * Карта пассажира - только индикатор.

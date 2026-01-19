@@ -1,5 +1,6 @@
-package ru.makhonya.javalearn.payment;
+package ru.makhonya.javalearn.payment.exception.bank;
 
+import ru.makhonya.javalearn.payment.Transaction;
 import ru.makhonya.javalearn.payment.exception.technical.NetworkException;
 import ru.makhonya.javalearn.payment.exception.technical.TransactionFailedException;
 import ru.makhonya.javalearn.payment.transaction.CardNumber;
