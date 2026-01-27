@@ -12,6 +12,7 @@ public final class InsufficientFundsException extends BusinessException {
 	/**
 	 * Недостаточно средств на карте.
 	 *
+	 * @param cardNumber номер карты
 	 * @param available доступный баланс
 	 * @param required требуемая сумма
 	 */

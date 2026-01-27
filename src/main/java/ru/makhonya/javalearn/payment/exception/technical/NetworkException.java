@@ -20,4 +20,8 @@ public class NetworkException extends TechnicalException {
 	public NetworkException(String operation) {
 		super("Сетевая ошибка в " + operation);
 	}
+
+	public NetworkException() {
+
+	}
 }
