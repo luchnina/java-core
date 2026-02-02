@@ -1,12 +1,10 @@
-package ru.makhonya.javalearn.payment;
+package ru.makhonya.javalearn.payment.bank;
 
 
-import ru.makhonya.javalearn.payment.bank.Bank;
 import ru.makhonya.javalearn.payment.exception.technical.NetworkException;
-import ru.makhonya.javalearn.payment.transaction.CardNumber;
+import ru.makhonya.javalearn.payment.transaction.Card;
 import ru.makhonya.javalearn.payment.transaction.Money;
-import ru.makhonya.javalearn.payment.transaction.TerminalId;
-import ru.makhonya.javalearn.payment.transaction.TransactionId;
+import ru.makhonya.javalearn.payment.transaction.Transaction;
 
 import java.util.Random;
 
@@ -29,16 +27,16 @@ public class NetworkBank implements Bank {
    * Открывает транзакцию с повторными попытками при сетевых сбоях.
    *
    * @param terminalId ID терминала (источник запроса)
-   * @param cardNumber номер карты клиента
+   * @param card номер карты клиента
    * @return объект транзакции
    * @throws NetworkException если все попытки соединения неудачны
    */
   @Override
-  public Transaction openTransaction(TerminalId terminalId, CardNumber cardNumber) {
+  public Transaction openTransaction(String terminalId, Card card) {
 
     for (int i = 0; i < maxRetries; i++) {
       if (isConnectionSuccess()) {
-        return realBank.openTransaction(terminalId, cardNumber);
+        return realBank.openTransaction(terminalId, card);
       }
     }
 
@@ -53,7 +51,7 @@ public class NetworkBank implements Bank {
    * @throws NetworkException при сбоях сетевого соединения
    */
   @Override
-  public Money getBalance(TransactionId transactionId) {
+  public Money getBalance(String transactionId) {
 
     for (int i = 0; i < maxRetries; i++) {
       if (isConnectionSuccess()) {
@@ -72,7 +70,7 @@ public class NetworkBank implements Bank {
    * @throws NetworkException при сбоях сетевого соединения
    */
   @Override
-  public void freeze(TransactionId transactionId, Money amount) {
+  public void freeze(String transactionId, Money amount) {
 
     for (int i = 0; i < maxRetries; i++) {
       if (isConnectionSuccess()) {
@@ -91,7 +89,7 @@ public class NetworkBank implements Bank {
    * @throws NetworkException при сбоях сетевого соединения
    */
   @Override
-  public void commit(TransactionId transactionId) {
+  public void commit(String transactionId) {
 
     // Всегда выполняем коммит локально/гарантированно
     realBank.commit(transactionId);

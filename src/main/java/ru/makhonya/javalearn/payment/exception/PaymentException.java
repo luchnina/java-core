@@ -5,18 +5,22 @@ package ru.makhonya.javalearn.payment.exception;
  */
 public class PaymentException extends RuntimeException {
 
-	/**
-	 * @param message описание ошибки
-	 */
-	public PaymentException(String message) {
-		super(message);
-	}
+  public PaymentException() {
+    super();
+  }
 
-	/**
-	 * @param message описание ошибки
-	 * @param cause исходная причина
-	 */
-	public PaymentException(String message, Throwable cause) {
-		super(message, cause);
-	}
+  /**
+   * @param message описание ошибки
+   */
+  public PaymentException(String message) {
+    super(message);
+  }
+
+  /**
+   * @param message описание ошибки
+   * @param cause исходная причина
+   */
+  public PaymentException(String message, Throwable cause) {
+    super(message, cause);
+  }
 }
