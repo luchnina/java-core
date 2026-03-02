@@ -7,15 +7,15 @@ import ru.makhonya.javalearn.payment.exception.PaymentException;
  */
 public abstract class TechnicalException extends PaymentException {
 
-	protected TechnicalException(String message) {
-		super(message);
-	}
+    protected TechnicalException(String message) {
+        super(message);
+    }
 
-	protected TechnicalException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    protected TechnicalException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	public TechnicalException() {
-		super();
-	}
+    public TechnicalException() {
+        super();
+    }
 }

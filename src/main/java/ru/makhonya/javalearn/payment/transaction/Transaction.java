@@ -12,19 +12,19 @@ import org.jspecify.annotations.NonNull;
  * @param status текущий статус платежа
  */
 public record Transaction(
-    @NonNull String terminalId,
-    @NonNull String id,
-    Card card,
-    @NonNull Money amount,
-    TransactionStatus status
+        @NonNull String terminalId,
+        @NonNull String id,
+        Card card,
+        @NonNull Money amount,
+        TransactionStatus status
 ) {
 
-  /**
-   * Проверяем, открыта ли транзакция
-   *
-   * @return true если транзакция открыта
-   */
-  public boolean isOpen() {
-    return status == TransactionStatus.OPEN;
-  }
+    /**
+     * Проверяем, открыта ли транзакция
+     *
+     * @return true если транзакция открыта
+     */
+    public boolean isOpen() {
+        return status == TransactionStatus.OPEN;
+    }
 }

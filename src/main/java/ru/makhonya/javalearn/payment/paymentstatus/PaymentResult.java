@@ -5,5 +5,5 @@ package ru.makhonya.javalearn.payment.paymentstatus;
  */
 public sealed interface PaymentResult permits PaymentSuccess, PaymentError {
 
-	boolean isSuccess();
+    boolean isSuccess();
 }

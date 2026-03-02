@@ -7,14 +7,14 @@ import ru.makhonya.javalearn.geography.util.RepositoryPlace;
 
 public class GeographyApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(GeographyApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(GeographyApplication.class);
 
-	void main() {
-		Location a = RepositoryPlace.randomPlace();
-		Location b = RepositoryPlace.randomPlace();
+    void main() {
+        Location a = RepositoryPlace.randomPlace();
+        Location b = RepositoryPlace.randomPlace();
 
-		double distance = DistanceCalculator.calculate(a, b);
+        double distance = DistanceCalculator.calculate(a, b);
 
-		log.info("Расстояние между {} и {} равно {} км.", a, b, (int) distance);
-	}
+        log.info("Расстояние между {} и {} равно {} км.", a, b, (int) distance);
+    }
 }

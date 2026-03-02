@@ -25,7 +25,7 @@ public class Computer {
     }
 
     public void setOperatingSystems(String[] operatingSystems) {
-       this.operatingSystems = operatingSystems;
+        this.operatingSystems = operatingSystems;
     }
 
     public void addSystem(String system) {

@@ -7,8 +7,8 @@ package ru.makhonya.javalearn.payment.paymentstatus;
  */
 public record PaymentError(String message, Exception exception) implements PaymentResult {
 
-  @Override
-  public boolean isSuccess() {
-    return false;
-  }
+    @Override
+    public boolean isSuccess() {
+        return false;
+    }
 }

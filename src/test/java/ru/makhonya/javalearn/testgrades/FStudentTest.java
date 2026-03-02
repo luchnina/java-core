@@ -2,7 +2,7 @@ package ru.makhonya.javalearn.testgrades;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FStudentTest {
 
@@ -24,7 +24,7 @@ class FStudentTest {
         };
         int[] ratings = new int[]{3, 2, 3, 2, 4, 3, 3, 3};
 
-        for (int i = 0; i < neighbourhoods.length;) {
+        for (int i = 0; i < neighbourhoods.length; ) {
             for (int rating : ratings) {
                 assertEquals(rating, student.scoreCalculation(neighbourhoods[i]), i);
                 i++;

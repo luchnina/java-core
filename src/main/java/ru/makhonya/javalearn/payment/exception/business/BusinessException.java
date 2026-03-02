@@ -7,11 +7,11 @@ package ru.makhonya.javalearn.payment.exception.business;
  */
 public abstract class BusinessException extends RuntimeException {
 
-	protected BusinessException(String message) {
-		super(message);
-	}
+    protected BusinessException(String message) {
+        super(message);
+    }
 
-	protected BusinessException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    protected BusinessException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

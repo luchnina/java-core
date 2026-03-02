@@ -8,17 +8,17 @@ package ru.makhonya.javalearn.payment.transaction;
  */
 public record Card(String maskedNumber) {
 
-  /**
-   * Конструктор с валидацией на правильную маску
-   *
-   * @param maskedNumber замаскированный номер карты
-   * @throws IllegalArgumentException если формат неверный
-   */
-  public Card {
-    if (maskedNumber == null || !maskedNumber.matches("\\*\\*\\*\\*\\s?\\d{4}")) {
-      throw new IllegalArgumentException(
-          "Неправильный формат карты: " + maskedNumber + ". Правильный: **** 1234 и ****1234"
-      );
+    /**
+     * Конструктор с валидацией на правильную маску
+     *
+     * @param maskedNumber замаскированный номер карты
+     * @throws IllegalArgumentException если формат неверный
+     */
+    public Card {
+        if (maskedNumber == null || !maskedNumber.matches("\\*\\*\\*\\*\\s?\\d{4}")) {
+            throw new IllegalArgumentException(
+                    "Неправильный формат карты: " + maskedNumber + ". Правильный: **** 1234 и ****1234"
+            );
+        }
     }
-  }
 }

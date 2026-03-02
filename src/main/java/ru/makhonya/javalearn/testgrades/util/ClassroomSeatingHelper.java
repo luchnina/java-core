@@ -4,19 +4,19 @@ import java.util.random.RandomGenerator;
 
 public record ClassroomSeatingHelper() {
 
-  static int[] validValues = {0, 2, 3, 4, 5};
-  static final RandomGenerator generator = RandomGenerator.getDefault();
+    static final RandomGenerator generator = RandomGenerator.getDefault();
+    static int[] validValues = {0, 2, 3, 4, 5};
 
-  /// Заполнение массива рандомными элементами из доступных значений, которые прописаны заранее в классе
-  public static int[] automatedSeatingAssignment() {
-    int numberValueGenerations = 30;
-    int[] classroom = new int[numberValueGenerations];
+    /// Заполнение массива рандомными элементами из доступных значений, которые прописаны заранее в классе
+    public static int[] automatedSeatingAssignment() {
+        int numberValueGenerations = 30;
+        int[] classroom = new int[numberValueGenerations];
 
-    for (int i = 0; i < numberValueGenerations; i++) {
-      int randomIndex = generator.nextInt(validValues.length);
-      classroom[i] = validValues[randomIndex];
+        for (int i = 0; i < numberValueGenerations; i++) {
+            int randomIndex = generator.nextInt(validValues.length);
+            classroom[i] = validValues[randomIndex];
+        }
+
+        return classroom;
     }
-
-    return classroom;
-  }
 }
