@@ -2,14 +2,15 @@ package ru.makhonya.javalearn.clientrepository;
 
 import org.jspecify.annotations.NonNull;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class ClientRegistration implements ClientRepository {
     Map<Long, Client> clients = new HashMap<>();
     Map<String, Client> clientsByPhone = new HashMap<>();
     NavigableMap<StatisticKey, Client> clientsByUpdated = new TreeMap<>();
+
+    private Long counter = 0L;
 
     public ClientRegistration(Map<Long, Client> clients) {
         this.clients.putAll(clients);
@@ -45,13 +46,13 @@ public class ClientRegistration implements ClientRepository {
             throw new IllegalArgumentException("Номер телефона клиента не может быть null");
         }
 
-        Long id = ThreadLocalRandom.current().nextLong();
-        LocalDateTime localDateTime = LocalDateTime.now();
+        Long id = nextCounter();
+        Instant instantDateTime = Instant.now();
 
-        Client client = new Client(id, name, phone, statusClient, localDateTime);
+        Client client = new Client(id, name, phone, statusClient, instantDateTime);
         clients.put(id, client);
         clientsByPhone.put(client.getPhone(), client);
-        clientsByUpdated.put(new StatisticKey(statusClient, localDateTime, id), client);
+        clientsByUpdated.put(new StatisticKey(statusClient, instantDateTime, id), client);
     }
 
     public Client getClient(Long id) {
@@ -85,10 +86,10 @@ public class ClientRegistration implements ClientRepository {
      * @param endDate конец периода (может быть null → нет верхней границы)
      * @return отсортированный массив
      */
-    public List<Client> getVipClientsByDate(LocalDateTime startDate, LocalDateTime endDate) {
+    public List<Client> getVipClientsByDate(Instant startDate, Instant endDate) {
 
-        LocalDateTime start = (startDate != null) ? startDate : LocalDateTime.MIN;
-        LocalDateTime end = (endDate != null) ? endDate : LocalDateTime.MAX;
+        Instant start = (startDate != null) ? startDate : Instant.MIN;
+        Instant end = (endDate != null) ? endDate : Instant.MAX;
 
         return new ArrayList<>(
                 clientsByUpdated
@@ -101,15 +102,15 @@ public class ClientRegistration implements ClientRepository {
 
     private record StatisticKey(
             StatusClient status,
-            LocalDateTime date,
+            Instant date,
             Long id
     ) implements Comparable<StatisticKey> {
 
-        public static StatisticKey minOfDate(LocalDateTime date) {
+        public static StatisticKey minOfDate(Instant date) {
             return new StatisticKey(StatusClient.VIP, date, Long.MIN_VALUE);
         }
 
-        public static StatisticKey maxOfDate(LocalDateTime date) {
+        public static StatisticKey maxOfDate(Instant date) {
             return new StatisticKey(StatusClient.VIP, date, Long.MAX_VALUE);
         }
 
@@ -120,5 +121,9 @@ public class ClientRegistration implements ClientRepository {
                     .thenComparing(StatisticKey::id)
                     .compare(this, o);
         }
+    }
+
+    private Long nextCounter() {
+        return counter++;
     }
 }

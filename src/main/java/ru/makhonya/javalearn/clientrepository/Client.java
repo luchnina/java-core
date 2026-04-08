@@ -2,16 +2,23 @@ package ru.makhonya.javalearn.clientrepository;
 
 import org.jspecify.annotations.NonNull;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Objects;
 
-public record Client(
-        Long id,
-        String name,
-        String phone,
-        StatusClient status,
-        LocalDateTime date
-) {
+public class Client {
+    Long id;
+    String name;
+    String phone;
+    StatusClient status;
+    Instant date;
+
+    public Client(Long id, String name, String phone, StatusClient status, Instant date) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.status = status;
+        this.date = date;
+    }
 
     public boolean isVip() {
         return this.status == StatusClient.VIP;
@@ -25,7 +32,7 @@ public record Client(
         return this.phone;
     }
 
-    public LocalDateTime getDate() {
+    public Instant getDate() {
         return this.date;
     }
 
@@ -40,7 +47,8 @@ public record Client(
     @Override
     @NonNull
     public String toString() {
-        return String.format("%s, %s, %s, %s, %s", id, name, date, status, phone);
+        return this.getClass().getSimpleName() +
+                "(id=" + id + "name=" + name + "status=" + status + "phone=" + phone + ")";
     }
 
     @Override

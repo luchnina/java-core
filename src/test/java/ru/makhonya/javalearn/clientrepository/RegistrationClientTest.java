@@ -3,7 +3,7 @@ package ru.makhonya.javalearn.clientrepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RegistrationClientTest {
     private final Map<Long, Client> clients = new HashMap<>();
     ClientRegistration clientRegistration;
-    LocalDateTime start;
-    LocalDateTime end;
+    Instant start;
+    Instant end;
 
     private static final Long lizaId = ThreadLocalRandom.current().nextLong();
     private static final Long katyId = ThreadLocalRandom.current().nextLong();
@@ -25,18 +25,33 @@ class RegistrationClientTest {
 
     @BeforeEach
     void setUp() {
-        LocalDateTime now = LocalDateTime.now();
+        Instant now = Instant.now();
         start = now.minusSeconds(5);
         clients.put(lizaId,
-                new Client(lizaId, "Лиза", "8992222", StatusClient.VIP, now.minusSeconds(4))
+                new Client(
+                        lizaId, "Лиза",
+                        "8992222",
+                        StatusClient.VIP,
+                        now.minusSeconds(4)
+                )
         );
 
         clients.put(katyId,
-                new Client(katyId, "Катя", "8997222", StatusClient.VIP, now.minusSeconds(3))
+                new Client(
+                        katyId, "Катя",
+                        "8997222",
+                        StatusClient.VIP,
+                        now.minusSeconds(3)
+                )
         );
 
         clients.put(lilyId,
-                new Client(lilyId, "Лиля", "8933333", StatusClient.USUAL, now.minusSeconds(2))
+                new Client(
+                        lilyId, "Лиля",
+                        "8933333",
+                        StatusClient.USUAL,
+                        now.minusSeconds(2)
+                )
         );
 
         end = now.minusSeconds(1);
