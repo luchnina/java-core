@@ -27,22 +27,21 @@ public class CorrespondenceFilesApplication {
                         .replaceAll("\\s+", " ")
                         .trim()
                 )
-                .flatMap(s -> Arrays.stream(s.split(" ")))
-                .sorted()
-                .collect(Collectors.toMap(
+                .flatMap(s -> s.isEmpty() ? Stream.empty() : Arrays.stream(s.split(" ")))
+                .collect(Collectors.groupingBy(
                         Function.identity(),
-                        s -> 1,
-                        Integer::sum,
-                        LinkedHashMap::new
+                        LinkedHashMap::new,
+                        Collectors.summingInt(e -> 1)
                 ))
                 .entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .sorted(Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder())
+                        .thenComparing(Map.Entry.comparingByKey()))
                 .limit(10)
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         Map.Entry::getValue,
-                        (e1, e2) -> e1,
+                        (a, b) -> a,
                         LinkedHashMap::new
                 ));
     }
